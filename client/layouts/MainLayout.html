@@ -1,13 +1,11 @@
 <template name="MainLayout">
-    <header>
-        <h1>My first Meteor app.</h1>
-        {{> loginButtons}}
-    </header>
-    <main>
-        {{> Template.dynamic template=main}}
-    </main>
-</template>
-
-<template name="Test">
-    Hello!!
+    <div class="container">
+        <header>
+            <h1>My first Meteor app.</h1>
+            {{> loginButtons}}
+        </header>
+        <main>
+            {{> Template.dynamic template=main}}
+        </main>
+    </div>
 </template>
