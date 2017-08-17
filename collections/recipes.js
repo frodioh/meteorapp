@@ -11,6 +11,18 @@ Recipes.allow({
     }
 });
 
+//Схема для ингредиентов
+IngredientSchema = new SimpleSchema({
+    name: {
+        type: String,
+        label: "Ингредиент"
+    },
+    amount: {
+        type: String,
+        label: "Количество"
+    }
+});
+
 //Создание схемы для этой коллекции
 RecipeSchema = new SimpleSchema({
     name: {
@@ -20,6 +32,20 @@ RecipeSchema = new SimpleSchema({
     desc: {
         type: String,
         label: "Описание"
+    },
+    ingredients: {
+        type: Array
+    },
+    'ingredients.$': {
+        type: IngredientSchema
+    },
+    inMenu: {
+        type: Boolean,
+        defaultValue: false,
+        optional: true,
+        autoform: {
+            type: "hidden"
+        }
     },
     author: {
         type: String,
