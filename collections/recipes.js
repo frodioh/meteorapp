@@ -4,6 +4,13 @@ SimpleSchema.extendOptions(['autoform']);
 //Создание коллекции
 Recipes = new Mongo.Collection('recipes');
 
+//Определение прав для коллекции
+Recipes.allow({
+    insert: function(userId, doc) {
+        return !!userId;
+    }
+});
+
 //Создание схемы для этой коллекции
 RecipeSchema = new SimpleSchema({
     name: {
