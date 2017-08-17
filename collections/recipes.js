@@ -1,3 +1,6 @@
+import SimpleSchema from 'simpl-schema';
+SimpleSchema.extendOptions(['autoform']);
+
 //Создание коллекции
 Recipes = new Mongo.Collection('recipes');
 
