@@ -1,0 +1,24 @@
+<template name="override-atPwdForm">
+    <div class="at-pwd-form">
+        <form id="at-pwd-form" class="{{disabled}} auth-page__form auth-form" novalidate action="#" method="POST">
+            <div  class="auth-form__top">
+                <div class="auth-form__logo-wrap"><img class="auth-form__logo-image" src="assets/img/login-logo.png"></div>
+                <h1 class="auth-form__header">Личный кабинет</h1>
+            </div>
+            <div class="auth-form__fields">
+                {{#each fields}}
+                    {{> atInput}}
+                {{/each}}
+                {{> atPwdFormBtn}}
+            </div>
+            <div class="auth-form__links">
+                {{#if showSignUpLink}}
+                    {{> atSignupLink}}
+                {{/if}}
+                {{#if showForgotPasswordLink}}
+                    {{> atPwdLink}}
+                {{/if}}
+            </div>
+        </form>
+    </div>
+</template>

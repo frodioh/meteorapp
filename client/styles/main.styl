@@ -1,0 +1,388 @@
+@import "modules/sprite"
+@import "modules/normalize.css"
+@import "modules/fonts.css"
+@import "modules/vars"
+@import "modules/jqueryui"
+//Pages
+@import "pages/auth"
+
+//#Base
+*,
+*:before,
+*:after
+  box-sizing border-box
+
+html, body, #__blaze-root
+  width 100%;
+  height 100%;
+  font $main-font
+
+body
+  background $first-bg
+
+h1, h2, h3, h4, h5, h6
+  margin 0
+
+::-webkit-input-placeholder
+  color $tertiary-text
+::-moz-placeholder
+  color $tertiary-text
+:-ms-input-placeholder
+  color $tertiary-text
+:-moz-placeholder
+  color $tertiary-text
+
+.primary-header
+  font-size 1.6rem
+  font-weight bold
+  color $tertiary-text
+  margin-bottom 2px
+
+.primary-caption
+  font-size 1rem
+  font-weight 300
+  color $tertiary-text
+
+.para-section
+  padding 28px 23px 30px
+  margin-bottom 27px
+  background $white-bg
+
+.btn
+  padding 22px 30px
+  border-radius 5px
+  border none
+  font-size 1.125rem
+  font-weight 300
+  color $primary-text
+  text-decoration none;
+  text-align center
+
+.btn--pay-page
+  background $green-btn-bg
+
+.btn--login
+  background $third-bg
+
+//#Layout
+.container
+  display flex
+  max-width 1100px
+  margin 0 auto
+
+.wrapper
+  display flex
+  flex-direction column
+  min-height 100%
+  width 100%
+  &__inner
+    display flex
+    flex-direction: column
+    width 100%
+    flex-grow 1
+    background linear-gradient(to right, $secong-bg 0%, $secong-bg 33.4375%, $first-bg 33.4375%, $first-bg 100%)
+    .container
+      width 100%
+      flex-grow 1
+
+.main-header
+  width 100%
+  padding 17px 0 15px
+  background $third-bg
+  .container
+    align-items center
+
+.sidebar
+  width 25.90909090909091%
+  display flex
+  flex-direction column
+  justify-content space-between
+  padding-top 40px
+  background $secong-bg
+
+.copyright
+  padding 33px 0
+  color $primary-text
+  &__link
+    color $primary-text
+
+.content
+  width 74.09090909090909%
+  padding-left 37px
+  padding-top 25px
+  padding-bottom 85px
+  background $first-bg
+
+.main-header__logo
+  width 20.90909090909091%
+
+.main-header__logo-image
+  max-width 110px
+
+.main-header__statistics
+  width 44.09090909090909%
+
+.statistics
+  &__list
+    padding 0
+    margin 0
+    list-style none
+  &__item
+    font-size 1.066rem
+    font-weight 300
+    color $primary-text
+
+.main-header__user-block
+  display flex
+  align-items center
+  width 35%
+
+.user-block
+  &__left
+    display flex
+  &__right
+    display flex
+    margin-left auto
+  &__avatar
+    width 50px
+    height 50px
+    overflow hidden
+    border-radius 50%
+    margin-right 17px
+  &__avatar-image
+    max-width 100%
+  &__info
+    font-size 1.066rem
+    font-weight 300
+    color $primary-text
+  &__name
+    text-decoration: none
+    color $primary-text
+    font-weight bold
+    border-bottom 1px dashed $primary-text
+  &__logout
+    width 26px
+    height 27px
+  &__logout svg
+    max-width 100%
+    max-height 100%
+  &__logout svg *
+    fill $white
+
+.main-navigation
+  &__list
+    padding 0
+    margin 0
+    list-style none
+  &__item
+    display flex
+    margin-bottom 15px
+  &__link
+    display flex
+    text-decoration none
+    padding-right 45px
+  &__link:hover
+    svg *
+      fill $selected-color
+    .main-navigation__title
+      color $selected-color
+      text-decoration none
+  &__item:last-child
+    margin-bottom 0
+  &__right
+    flex-grow 1
+  &__left
+    width 32px
+    padding-top 3px
+    flex-shrink 0
+  &__item--record svg
+    width 20px
+    height 20px
+  &__item--pay svg
+    width 18px
+    height 19px
+  &__item--lessons svg
+    width 15px
+    height 20px
+  &__item--info svg
+    width 22px
+    height 16px
+  &__item--rating svg
+    width 17px
+    height 16px
+  &__item--video svg
+    width 20px
+    height 14px
+  &__item svg *
+    fill $primary-text
+  &__title
+    font-size 1.066rem
+    font-weight normal
+    color $primary-text
+    text-decoration underline
+  &__caption
+    color $caption-text
+
+//#Record page
+.record-page, .pay-page
+  &__table
+    font-size 1.0rem
+    width 100%
+    border-collapse collapse
+    th
+      color $table-headers
+    td,th
+      padding 16px 0
+      text-align left
+      color $secondary-text
+    td
+      font-weight 300
+    td:first-child,th:first-child
+      padding-left 27px
+    tr
+      background $white-bg
+    tbody tr:nth-child(2n+1)
+      background $table-bg
+  &__link
+    color $links-text
+
+//#Breadcrumbs
+.breadcrumbs
+  margin-bottom 10px
+  &__list
+    font-size 0
+    padding 0
+    margin 0
+    list-style none
+  &__item
+    font-size 1rem
+    position relative
+    display inline-block
+    padding-right 14px
+    margin-right 8px
+    color $secondary-text
+  &__item:last-of-type
+    margin-right 0
+  &__arrow
+    display flex
+    position absolute
+    top 50%
+    right 0
+    width 6px
+    height 7px
+    transform translateY(-30%)
+  &__arrow svg
+    max-width 100%
+    max-height 100%
+  &__arrow svg *
+    fill $secondary-text
+  &__link
+    color $secondary-text
+
+//#Pay page
+.pay-page
+  .primary-header
+    margin-bottom 20px
+  .pay-page__tab-links
+    margin-bottom 15px
+  &__table
+    th
+      color $tertiary-text
+    margin-bottom 25px
+  &__total
+    display flex
+    justify-content space-between
+    align-items center
+  &__sum
+    font-size 1.125rem
+    color $tertiary-text
+    &-bright
+      font-weight bold
+  &__status
+    &--accept
+      color $status-text-accept
+
+.pay-page a.pay-page__print-link
+  color $links-text
+
+//#Profile
+.profile
+  &__card
+    width 100%
+    display flex
+    background $white-bg
+
+//#Auth page
+.auth-page
+  display flex
+  flex-direction column
+  justify-content center
+  align-items center
+  min-width 100%
+  min-height 100%
+  background $white-bg
+  text-align center
+  &__inner
+    display flex
+    flex-direction column
+
+.auth-form
+  width 488px
+  padding 39px 75px
+  margin-bottom 30px
+  overflow hidden
+  background $white-bg
+  border-radius: 6px;
+  box-shadow: 0 2px 84px 0 rgba(0, 0, 0, 0.13);
+  &__top
+    display flex
+    justify-content space-around
+    align-items center
+    margin-bottom 50px
+  &__logo-wrap
+    width 105px
+    overflow hidden
+  &__logo-image
+    max-width 100%
+  &__header
+    font-size 1.5rem
+    font-weight bold
+  &__fields
+    display flex
+    flex-direction column
+  &__input
+    width 100%
+    padding 22px 30px
+    margin-bottom 22px
+    border-radius: 6px;
+    background $white-bg
+    border 1px solid $input-border
+    outline none
+    font-size 1.125rem
+    font-weight 300rem
+    color $tertiary-text
+  &__btn
+    margin-bottom 20px
+  &__links
+    width 225px
+    margin 0 auto
+    display flex
+    justify-content center
+  &__links a
+    font-size 1rem
+    color $links-text
+  &__register
+    position relative
+    padding-right 13px
+    margin-right 13px
+  &__register:after
+    content ''
+    display block
+    width 1px
+    position absolute
+    top 2px
+    bottom 2px
+    right 0
+    background $input-border
+  &__index-link
+    color $links-text
