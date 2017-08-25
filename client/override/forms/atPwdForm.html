@@ -11,6 +11,12 @@
                 {{/each}}
                 {{> atPwdFormBtn}}
             </div>
+            {{#if showResult}}
+                {{> atResult}}
+            {{/if}}
+            {{#if showError}}
+                {{> atError}}
+            {{/if}}
             <div class="auth-form__links">
                 {{#if showSignUpLink}}
                     {{> atSignupLink}}
