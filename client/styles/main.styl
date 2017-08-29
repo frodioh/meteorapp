@@ -326,7 +326,7 @@ h1, h2, h3, h4, h5, h6
     display flex
     flex-direction column
 
-.auth-form
+.auth-form, .register-form
   width 488px
   padding 39px 75px
   margin-bottom 30px
@@ -347,19 +347,18 @@ h1, h2, h3, h4, h5, h6
   &__header
     font-size 1.5rem
     font-weight bold
-  &__fields
+  &__fields, &__btns
     display flex
     flex-direction column
   &__input
     width 100%
     padding 22px 30px
-    margin-bottom 22px
     border-radius: 6px;
     background $white-bg
     border 1px solid $input-border
     outline none
     font-size 1.125rem
-    font-weight 300rem
+    font-weight 300
     color $tertiary-text
   &__btn
     margin-bottom 20px
@@ -386,3 +385,75 @@ h1, h2, h3, h4, h5, h6
     background $input-border
   &__index-link
     color $links-text
+  .ui.message
+    position: absolute;
+    bottom: 0;
+    font-size: 0.75rem;
+    z-index: 10;
+    transform: translate(-2%, 42%);
+    right: 0;
+    width: 70%;
+  .at-input
+    position relative
+    margin-bottom 22px
+  .ui.selection.dropdown > .dropdown.icon
+    display flex
+    align-items center
+    background $input-border
+    height 100%
+    width 47px
+    right 10px
+  .ui.dropdown > .dropdown.icon:before
+    display none
+  .ui.dropdown > .dropdown.icon:after
+    content ''
+    position absolute
+    left 50%
+    top 50%
+    transform translate(-50%, -50%)
+    background url(/assets/icons/dropdown-arrow.png) no-repeat center/100%
+    z-index: 50
+    width 17px
+    height 31px
+  .ui.dropdown
+    width 100%
+    height 100%
+  .ui.dropdown > .text
+    height 100%
+    display flex
+    align-items center
+  .default.text
+    font-size 1.3rem
+    font-weight 300
+    color #000 !important
+  .ui.selection.dropdown
+    padding-left 32px
+
+.register-form
+  width 755px
+  padding-left 32px
+  padding-right 32px
+  .at-input
+    width 49%
+  .auth-form__fields
+    flex-direction row
+    justify-content space-between
+    flex-wrap wrap
+  &__input
+    width 100%
+    padding 22px 13px
+  .auth-form__top
+    justify-content flex-start
+  .auth-form__logo-wrap
+    margin-right 35px
+  .at-select-input
+    width 70%
+  .at-select-input + .at-input
+    width 27%
+  .ui.checkbox .box:before, .ui.checkbox label:before,
+  .ui.checkbox .box:after, .ui.checkbox label:after
+    top 3px
+  .at-input.ui.checkbox
+    width 100%
+    text-align left
+    color $input-border
