@@ -1,16 +1,18 @@
 <template name="Header">
     <header class="main-header">
         <div class="container"><a class="main-header__logo" href="#"><img class="main-header__logo-image" src="assets/img/main-logo.png"></a>
-            <div class="main-header__statistics statistics">
-                <ul class="statistics__list">
-                    <li class="statistics__item">Оплачено занятий: 3</li>
-                    <li class="statistics__item">Осталось отъездить: 45</li>
-                </ul>
-            </div>
+            {{#if isStudent}}
+                <div class="main-header__statistics statistics">
+                    <ul class="statistics__list">
+                        <li class="statistics__item">Оплачено занятий: {{user.student.lessons}}</li>
+                        <li class="statistics__item">Осталось отъездить: {{user.student.totalLessons}}</li>
+                    </ul>
+                </div>
+            {{/if}}
             <div class="main-header__user-block user-block">
                 <div class="user-block__left"><a class="user-block__avatar" href="profile.html"><img class="user-block__avatar-image" src="assets/img/main-user-avatar.jpg"></a>
                     <div class="user-block__info">
-                        <div class="user-block__type">Курсант автошколы</div><a class="user-block__name" href="profile.html">{{user.profile.name}} {{user.profile.surname}}</a>
+                        <div class="user-block__type">{{userTitle}}</div><a class="user-block__name" href="profile.html">{{user.username}} {{user.surname}}</a>
                     </div>
                 </div>
                 <div class="user-block__right"><a class="user-block__logout" href="#">
