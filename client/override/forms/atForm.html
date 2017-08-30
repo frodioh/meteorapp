@@ -13,20 +13,25 @@
             {{#if showPwdForm}}
                 {{> atPwdForm}}
             {{/if}}
-            {{#if showSignInLink}}
-                {{> atSigninLink}}
-            {{/if}}
+
             {{#if showResendVerificationEmailLink}}
                 {{> atResendVerificationEmailLink}}
             {{/if}}
-            <div class="auth-form__links">
-                {{#if showSignUpLink}}
-                    {{> atSignupLink}}
-                {{/if}}
-                {{#if showForgotPasswordLink}}
-                    {{> atPwdLink}}
-                {{/if}}
-            </div>
+            {{#if isSignUp}}
+              {{#if showSignInLink}}
+                {{> atSigninLink}}
+              {{/if}}
+            {{/if}}
+            {{#if isSignIn}}
+              <div class="auth-form__links">
+                  {{#if showSignUpLink}}
+                      {{> atSignupLink}}
+                  {{/if}}
+                  {{#if showForgotPasswordLink}}
+                      {{> atPwdLink}}
+                  {{/if}}
+              </div>
+            {{/if}}
         </div>
     {{/unless}}
 </template>

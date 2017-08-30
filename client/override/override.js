@@ -5,3 +5,5 @@ Template['override-atPwdFormBtn'].replaces('atPwdFormBtn');
 Template['override-atTextInput'].replaces('atTextInput');
 Template['override-atSelectInput'].replaces('atSelectInput');
 Template['override-atCheckboxInput'].replaces('atCheckboxInput');
+Template['override-atSigninLink'].replaces('atSigninLink');
+Template['override-atSignupLink'].replaces('atSignupLink');

@@ -6,6 +6,20 @@ Template['atForm'].helpers({
         } else {
             return 'auth-form';
         }
+    },
+    isSignUp: function() {
+        if(AccountsTemplates.getState() == 'signUp') {
+            return true;
+        } else {
+            return false;
+        }
+    },
+    isSignIn: function() {
+        if(AccountsTemplates.getState() == 'signIn') {
+            return true;
+        } else {
+            return false;
+        }
     }
 });
 

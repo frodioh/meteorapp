@@ -16,3 +16,18 @@
 //         return [];
 //     }
 // });
+
+Accounts.onCreateUser((options, user) => {
+  user.username = user.profile.username;
+  user.surname = user.profile.surname;
+  user.phone = user.profile.phone;
+  user.class = user.profile.class;
+  user.group = user.profile.group;
+  user.verified = false;
+  user.isArchive = false;
+  user.profile = {};
+
+  console.log(user);
+
+  return user;
+});
