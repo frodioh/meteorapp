@@ -15,16 +15,16 @@ Template.Header.helpers({
         return Roles.userIsInRole(Meteor.userId(), 'student');
     },
     userTitle() {
-        if(Meteor.user().superadmin) {
+        if(Roles.userIsInRole(Meteor.userId(), 'superadmin')) {
             return 'Суперадминистратор'
         }
-        if(Meteor.user().moderator) {
+        if(Roles.userIsInRole(Meteor.userId(), 'moderator')) {
             return 'Модератор'
         }
-        if(Meteor.user().instructor) {
+        if(Roles.userIsInRole(Meteor.userId(), 'instructor')) {
             return 'Инструктор'
         }
-        if(Meteor.user().student) {
+        if(Roles.userIsInRole(Meteor.userId(), 'student')) {
             return 'Курсант автошколы'
         }
     }

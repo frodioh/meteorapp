@@ -1,5 +1,6 @@
 Meteor.publish('userData', function () {
-    if (this.userId) {
+    userId = Meteor.userId();
+    if (userId) {
         userId = this.userId;
         // Select only the users that match the array of IDs passed in
         let selector = {
@@ -15,9 +16,9 @@ Meteor.publish('userData', function () {
                 phone: 1
             }
         };
-        options.fields.student = 1;
 
         if(Roles.userIsInRole(userId, 'student')) {
+            options.fields.student = 1;
         } else if(Roles.userIsInRole(userId, 'instructor')) {
             options.fields.instructor = 1;
         } else if(Roles.userIsInRole(userId, 'moderator')) {
@@ -25,8 +26,6 @@ Meteor.publish('userData', function () {
         } else if(Roles.userIsInRole(userId, 'superadmin')) {
             options.fields.superadmin = 1;
         }
-
-        console.log(Meteor.users.find(selector, options));
 
         return Meteor.users.find(selector, options);
     } else {

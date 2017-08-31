@@ -11,7 +11,8 @@ Accounts.onCreateUser((options, user) => {
         accepted: false,
         isArchive: false
       };
-      Roles.addUsersToRoles(user._id, 'student', Roles.GLOBAL_GROUP);
+      user.roles = ['student'];
   }
+  Roles.addUsersToRoles(user._id, 'student', Roles.GLOBAL_GROUP);
   return user;
 });
