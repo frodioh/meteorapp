@@ -1,0 +1,49 @@
+<template name="Video">
+    <main class="content page instructors-page">
+        <div class="content__inner">
+            <h1 class="primary-header">Видеоуроки</h1>
+            <div class="page__controls controls">
+                <form class="controls__form">
+                    <button type="button" class="ui button teal video-add">
+                        <i class="file video outline icon"></i>
+                        Добавить видео
+                    </button>
+                    <div class="ui tiny modal video-add-modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Добавление видео
+                        </div>
+                        <div class="content">
+                            <div class="ui input">
+                                <input type="text" class="video-title" name="video_title" placeholder="Заголовок">
+                            </div>
+                            <div class="ui input">
+                                <input type="url" class="video-link" name="video_link" placeholder="Ссылка">
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui approve button">Добавить</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {{#if subsReady 'video'}}
+                <div class="ui middle aligned divided list video">
+                    {{#each video}}
+                        <div class="video__item">
+                            <iframe width="100%" src="{{link}}" frameborder="0" allowfullscreen></iframe>
+                            <a href="#" class="page__link">{{title}}</a>
+                        </div>
+                    {{/each}}
+                </div>
+            {{else}}
+                <div class="ui segment">
+                    <p></p>
+                    <div class="ui active inverted dimmer">
+                        <div class="ui loader"></div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </main>
+</template>

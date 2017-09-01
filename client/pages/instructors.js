@@ -5,7 +5,7 @@ Template.Instructors.onRendered(function () {
 
 Template.Instructors.helpers({
   instructors() {
-    return Meteor.users.find({roles: ['instructor']});
+    return Meteor.users.find({roles: {"__global_roles__": ['instructor']}});
   },
   dateView(date) {
     let options = {
@@ -18,7 +18,7 @@ Template.Instructors.helpers({
 });
 
 Template.Instructors.events({
-  //#Students
+  //#Instructors
   'click .instructor-add': function(event) {
     event.preventDefault();
       $('.ui.modal.instructor-add-modal').modal({
@@ -26,55 +26,30 @@ Template.Instructors.events({
           transition: 'vertical flip',
           onApprove: function() {
               let jthis = $(this);
-              let studentName = jthis.find('input.student-name');
-              let studentSurname = jthis.find('input.student-surname');
-              let studentEmail = jthis.find('input.student-email');
-              let studentPhone = jthis.find('input.student-phone');
-              let studentPass = jthis.find('input.student-pass');
-              let student = {
-                  username: studentName,
-                  surname: studentSurname,
-                  email: studentEmail,
-                  phone: studentPhone,
-                  pass: studentPass
+              let instructorName = jthis.find('input.instructor-name');
+              let instructorSurname = jthis.find('input.instructor-surname');
+              let instructorEmail = jthis.find('input.instructor-email');
+              let instructorPhone = jthis.find('input.instructor-phone');
+              let instructorAuto = jthis.find('input.instructor-auto');
+              let instructorPass = jthis.find('input.instructor-pass');
+              let instructor = {
+                  username: instructorName.val(),
+                  surname: instructorSurname.val(),
+                  email: instructorEmail.val(),
+                  phone: instructorPhone.val(),
+                  auto: instructorAuto.val(),
+                  pass: instructorPass.val()
               };
-              studentName.value = '';
-              studentSurname.value = '';
-              studentEmail.value = '';
-              studentPhone.value = '';
-              studentPass.value = '';
-          },
-          inverted: true
-      }).modal('show');
-    Meteor.call('addInstructor', instructor, function(err, result) {
-      console.log(err);
-      console.log(result);
-    });
-  },
-  'click .student-add': function(event) {
-    event.preventDefault();
-      $('.ui.modal.student-add-modal').modal({
-          closable: true,
-          transition: 'vertical flip',
-          onApprove: function() {
-              let jthis = $(this);
-              let studentName = jthis.find('input.student-name');
-              let studentSurname = jthis.find('input.student-surname');
-              let studentEmail = jthis.find('input.student-email');
-              let studentPhone = jthis.find('input.student-phone');
-              let studentPass = jthis.find('input.student-pass');
-              let student = {
-                username: studentName,
-                surname: studentSurname,
-                email: studentEmail,
-                phone: studentPhone,
-                pass: studentPass
-              };
-              studentName.value = '';
-              studentSurname.value = '';
-              studentEmail.value = '';
-              studentPhone.value = '';
-              studentPass.value = '';
+              instructorName.value = '';
+              instructorSurname.value = '';
+              instructorEmail.value = '';
+              instructorPhone.value = '';
+              instructorAuto.value = '';
+              instructorPass.value = '';
+              Meteor.call('addInstructor', instructor, function(err, result) {
+                  console.log(err);
+                  console.log(result);
+              });
           },
           inverted: true
       }).modal('show');

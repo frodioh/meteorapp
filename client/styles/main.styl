@@ -252,6 +252,7 @@ h1, h2, h3, h4, h5, h6
       background $table-bg
   &__link
     color $links-text
+    text-decoration underline
   .controls
     display flex
     justify-content space-between
@@ -277,6 +278,22 @@ h1, h2, h3, h4, h5, h6
 .group-remove
   cursor pointer
 
+//#Instructors page
+  .instructors-page
+    .primary-header
+      margin-bottom 25px
+    .controls
+      &__left
+        width 59%
+      &__right
+        width 41%
+
+//#Video
+.video
+  display flex
+  flex-wrap wrap
+  &__item
+    width 50%
 
 //#Breadcrumbs
 .breadcrumbs

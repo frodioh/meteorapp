@@ -9,7 +9,9 @@ Meteor.publish('instructors', function(userId) {
 
   if (haveAccess) {
     let selector = {
-      roles: ['instructor']
+      roles: {
+        "__global_roles__": ['instructor']
+      }
     };
     this.ready();
     return Meteor.users.find(selector);

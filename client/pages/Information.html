@@ -1,0 +1,56 @@
+<template name="Information">
+    <main class="content page instructors-page">
+        <div class="content__inner">
+            <h1 class="primary-header">Информация</h1>
+            <div class="page__controls controls">
+                <form class="controls__form">
+                    <button type="button" class="ui button teal information-add">
+                        <i class="write icon"></i>
+                        Добавить страницу
+                    </button>
+                    <div class="ui tiny modal information-add-modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Добавление страницы
+                        </div>
+                        <div class="content">
+                            <div class="ui input">
+                                <input type="text" class="information-title" name="information_title" placeholder="Заголовок">
+                            </div>
+                            <div class="ui input">
+                                <textarea class="information-content" name="information_content">
+                                    Контент
+                                </textarea>
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui approve button">Добавить</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            {{#if subsReady 'information'}}
+                <div class="ui middle aligned divided list">
+                    {{#each information}}
+                        <div class="item">
+                            <div class="right floated content">
+                                <div class="ui button">Редактировать</div>
+                            </div>
+                            <div class="content">
+                                <i class="newspaper icon"></i>
+                                <a href="#" class="page__link">{{title}}</a>
+                            </div>
+                        </div>
+                    {{/each}}
+                </div>
+            {{else}}
+                <div class="ui segment">
+                    <p></p>
+                    <div class="ui active inverted dimmer">
+                        <div class="ui loader"></div>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </main>
+</template>

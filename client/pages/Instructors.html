@@ -1,15 +1,14 @@
 <template name="Instructors">
-    <main class="content page record-page">
+    <main class="content page instructors-page">
         <div class="content__inner">
             <h1 class="primary-header">Инструкторы</h1>
             <div class="page__controls controls">
                 <form class="controls__form">
-                    <button type="button" class="ui button teal insctructor-add">
+                    <button type="button" class="ui button teal instructor-add">
                         <i class="add square icon"></i>
-                        + Добавить инструктора
+                        Добавить инструктора
                     </button>
-                    <button type="button" class="ui button teal instructor-toarchive">
-                        <i class="add square icon"></i>
+                    <button type="button" class="ui button instructor-toarchive">
                         Показать архив
                     </button>
                     <div class="ui tiny modal instructor-add-modal">
@@ -64,24 +63,35 @@
                     </form>
                 </div>
             </div>
-            <table class="page__table">
-                <thead>
+            {{#if subsReady 'instructors'}}
+                <table class="page__table">
+                    <thead>
                     <tr>
                         <th>Имя инструктора</th>
                         <th>Автомобиль</th>
                         <th>Дата регистрации</th>
                         <th></th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><a class="page__link" href="#">Гарик Мартиросян</a></td>
-                        <td>Лада Гранта К933РТ</td>
-                        <td>10.07 - 17.07</td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    {{#each instructors}}
+                        <tr>
+                            <td><a class="page__link" href="#">{{username}} {{surname}}</a></td>
+                            <td>{{instructor.auto}}</td>
+                            <td>{{dateView createdAt}}</td>
+                            <td></td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+            {{else}}
+                <div class="ui segment">
+                    <p></p>
+                    <div class="ui active inverted dimmer">
+                        <div class="ui loader"></div>
+                    </div>
+                </div>
+            {{/if}}
         </div>
     </main>
 </template>
