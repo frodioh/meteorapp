@@ -1,0 +1,115 @@
+<template name="Students">
+  <main class="content page students-page">
+    <div class="content__inner">
+      <div class="page__tabs">
+        <div class="ui secondary menu">
+          <a class="item active" data-tab="students">
+            <h5 class="ui header primary-header">Студенты</h5>
+          </a>
+          <a class="item" data-tab="groups">
+            <h5 class="ui header primary-header">Группы</h5>
+          </a>
+        </div>
+        <div class="ui tab segment active" data-tab="students">
+          {{#if subsReady 'students'}}
+            <div class="page__controls controls">
+              <div class="controls__left">
+                <form class="controls__form">
+                  <label for="groupControl">Группа</label>
+                  <select id="groupControl" class="controls_group ui dropdown">
+                    <option value="">Выбрать группу</option>
+                    <option value="1">Группа 1</option>
+                    <option value="2">Группа 2</option>
+                  </select>
+                </form>
+              </div>
+              <div class="controls__right">
+                <form class="controls__form">
+                  <label for="studentNameInput">Студент</label>
+                  <div class="ui left input">
+                    <input id="studentNameInput" class="controls_group" placeholder="Имя и фамилия">
+                  </div>
+                  <input id="studentFindBtn" class="ui green basic button" type="submit" value="Искать">
+                </form>
+              </div>
+            </div>
+            <table class="page__table">
+              <thead>
+              <tr>
+                <th>Имя студента</th>
+                <th>Номер группы</th>
+                <th>Дата регистрации</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each students}}
+                <tr>
+                  <td><a class="page__link" href="#">{{username}} {{surname}}</a>{{#unless student.accepted}}<span class="page__sup">новый</span>{{/unless}}</td>
+                  <td>{{student.group}}</td>
+                  <td>{{createdAt}}</td>
+                  <td>
+                    {{#unless student.accepted}}<button class="ui orange button">Проверить</button>{{/unless}}
+                  </td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="ui segment">
+              <p></p>
+              <div class="ui active dimmer">
+                <div class="ui loader"></div>
+              </div>
+            </div>
+          {{/if}}
+        </div>
+        <div class="ui tab segment" data-tab="groups">
+          <div class="page__controls controls">
+            <div class="controls__left">
+              <form class="controls__form">
+                <label for="groupControl">Группа</label>
+                <select id="groupControl" class="controls_group ui dropdown">
+                  <option value="">Выбрать группу</option>
+                  <option value="1">Группа 1</option>
+                  <option value="2">Группа 2</option>
+                </select>
+              </form>
+            </div>
+            <div class="controls__right">
+              <form class="controls__form">
+                <label for="studentNameInput">Студент</label>
+                <div class="ui left input">
+                  <input id="studentNameInput" class="controls_group" placeholder="Имя и фамилия">
+                </div>
+                <input id="studentFindBtn" class="ui green basic button" type="submit" value="Искать">
+              </form>
+            </div>
+          </div>
+          <table class="page__table">
+            <thead>
+            <tr>
+              <th>Номер группы</th>
+              <th>Количество студентов</th>
+              <th>Дата регистрации</th>
+              <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <!--{{#each groups}}-->
+              <!--<tr>-->
+                <!--<td><a class="page__link" href="#">{{username}} {{surname}}</a></td>-->
+                <!--<td>{{student.group}}</td>-->
+                <!--<td>{{createdAt}}</td>-->
+                <!--<td>-->
+                  <!--{{#unless student.accepted}}<button class="ui orange button">Проверить</button>{{/unless}}-->
+                <!--</td>-->
+              <!--</tr>-->
+            <!--{{/each}}-->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </main>
+</template>
