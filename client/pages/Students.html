@@ -11,7 +11,6 @@
           </a>
         </div>
         <div class="ui tab segment active" data-tab="students">
-          {{#if subsReady 'students'}}
             <div class="page__controls controls">
               <div class="controls__left">
                 <form class="controls__form">
@@ -33,6 +32,7 @@
                 </form>
               </div>
             </div>
+          {{#if subsReady 'students'}}
             <table class="page__table">
               <thead>
               <tr>
@@ -45,11 +45,11 @@
               <tbody>
               {{#each students}}
                 <tr>
-                  <td><a class="page__link" href="#">{{username}} {{surname}}</a>{{#unless student.accepted}}<span class="page__sup">новый</span>{{/unless}}</td>
+                  <td><a class="page__link" href="#">{{username}} {{surname}}</a> {{#unless student.accepted}}<span class="page__sup">новый</span>{{/unless}}</td>
                   <td>{{student.group}}</td>
-                  <td>{{createdAt}}</td>
+                  <td>{{dateView createdAt}}</td>
                   <td>
-                    {{#unless student.accepted}}<button class="ui orange button">Проверить</button>{{/unless}}
+                    {{#unless student.accepted}}<button class="ui orange button tiny students-accept">Проверить</button>{{/unless}}
                   </td>
                 </tr>
               {{/each}}
@@ -65,25 +65,41 @@
           {{/if}}
         </div>
         <div class="ui tab segment" data-tab="groups">
-          {{#if subsReady 'groups'}}
             <div class="page__controls controls">
               <div class="controls__left">
                 <form class="controls__form">
-                  <button class="ui button group-add">
+                  <button type="button" class="ui button positive group-add">
                     <i class="add square icon"></i>
                     Добавить группу
                   </button>
-                  <div class="ui modal">
+                  <div class="ui tiny modal group-add-modal">
                     <i class="close icon"></i>
                     <div class="header">
                       Добавление группы
                     </div>
                     <div class="content">
-                      <input type="text" placeholder="Номер группы">
+                      <div class="ui input">
+                        <input type="text" class="group-name" name="group_name" placeholder="Номер группы">
+                      </div>
+                      <h4 class="ui horizontal divider header">
+                        <i class="add user icon"></i>
+                        Студенты
+                      </h4>
+                      <div class="ui fluid multiple search selection dropdown">
+                        <input name="tags" type="hidden">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Имя студента</div>
+                        <div class="menu">
+                          {{#if subsReady 'students'}}
+                            {{#each students}}
+                              <div class="item" data-value="{{_id}}">{{username}} {{surname}}</div>
+                            {{/each}}
+                          {{/if}}
+                        </div>
+                      </div>
                     </div>
                     <div class="actions">
-                      <div class="ui button">Cancel</div>
-                      <div class="ui button">OK</div>
+                      <div class="ui approve button">Добавить</div>
                     </div>
                   </div>
                 </form>
@@ -93,12 +109,13 @@
                 </form>
               </div>
             </div>
+          {{#if subsReady 'groups'}}
             <table class="page__table">
               <thead>
               <tr>
                 <th>Номер группы</th>
                 <th>Количество студентов</th>
-                <th>Дата регистрации</th>
+                <th>Дата создания</th>
                 <th></th>
               </tr>
               </thead>
@@ -106,9 +123,9 @@
               {{#each groups}}
                 <tr>
                   <td><a class="page__link" href="#">{{name}}</a></td>
-                  <td>{{studentsCount}}</td>
-                  <td>{{createdAt}}</td>
-                  <td><i class="remove icon group-remove"></i></td>
+                  <td>{{countStudents students}}</td>
+                  <td>{{dateView createdAt}}</td>
+                  <td><i class="remove icon red group-remove"></i></td>
                 </tr>
               {{/each}}
               </tbody>

@@ -8,6 +8,9 @@ Groups = new Mongo.Collection('groups');
 Groups.allow({
     insert: function(userId, doc) {
         return Roles.userIsInRole(userId, 'superadmin');
+    },
+    remove: function(userId, doc) {
+        return Roles.userIsInRole(userId, 'superadmin');
     }
 });
 
@@ -16,11 +19,6 @@ GroupsSchema = new SimpleSchema({
     name: {
         type: String,
         label: "Номер"
-    },
-    studentsCount: {
-      type: Number,
-      label: "Количество студентов",
-      defaultValue: 0
     },
     students: {
       type: Array
