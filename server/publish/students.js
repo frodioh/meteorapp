@@ -11,8 +11,9 @@ Meteor.publish('students', function(userId) {
     let selector = {
       roles: ['student']
     };
+    this.ready();
     return Meteor.users.find(selector);
   } else {
-    this.ready();
+    this.stop();
   }
 });

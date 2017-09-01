@@ -58,56 +58,69 @@
           {{else}}
             <div class="ui segment">
               <p></p>
-              <div class="ui active dimmer">
+              <div class="ui active inverted dimmer">
                 <div class="ui loader"></div>
               </div>
             </div>
           {{/if}}
         </div>
         <div class="ui tab segment" data-tab="groups">
-          <div class="page__controls controls">
-            <div class="controls__left">
-              <form class="controls__form">
-                <label for="groupControl">Группа</label>
-                <select id="groupControl" class="controls_group ui dropdown">
-                  <option value="">Выбрать группу</option>
-                  <option value="1">Группа 1</option>
-                  <option value="2">Группа 2</option>
-                </select>
-              </form>
+          {{#if subsReady 'groups'}}
+            <div class="page__controls controls">
+              <div class="controls__left">
+                <form class="controls__form">
+                  <button class="ui button group-add">
+                    <i class="add square icon"></i>
+                    Добавить группу
+                  </button>
+                  <div class="ui modal">
+                    <i class="close icon"></i>
+                    <div class="header">
+                      Добавление группы
+                    </div>
+                    <div class="content">
+                      <input type="text" placeholder="Номер группы">
+                    </div>
+                    <div class="actions">
+                      <div class="ui button">Cancel</div>
+                      <div class="ui button">OK</div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+              <div class="controls__right">
+                <form class="controls__form">
+                </form>
+              </div>
             </div>
-            <div class="controls__right">
-              <form class="controls__form">
-                <label for="studentNameInput">Студент</label>
-                <div class="ui left input">
-                  <input id="studentNameInput" class="controls_group" placeholder="Имя и фамилия">
-                </div>
-                <input id="studentFindBtn" class="ui green basic button" type="submit" value="Искать">
-              </form>
+            <table class="page__table">
+              <thead>
+              <tr>
+                <th>Номер группы</th>
+                <th>Количество студентов</th>
+                <th>Дата регистрации</th>
+                <th></th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each groups}}
+                <tr>
+                  <td><a class="page__link" href="#">{{name}}</a></td>
+                  <td>{{studentsCount}}</td>
+                  <td>{{createdAt}}</td>
+                  <td><i class="remove icon group-remove"></i></td>
+                </tr>
+              {{/each}}
+              </tbody>
+            </table>
+          {{else}}
+            <div class="ui segment">
+              <p></p>
+              <div class="ui active inverted dimmer">
+                <div class="ui loader"></div>
+              </div>
             </div>
-          </div>
-          <table class="page__table">
-            <thead>
-            <tr>
-              <th>Номер группы</th>
-              <th>Количество студентов</th>
-              <th>Дата регистрации</th>
-              <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <!--{{#each groups}}-->
-              <!--<tr>-->
-                <!--<td><a class="page__link" href="#">{{username}} {{surname}}</a></td>-->
-                <!--<td>{{student.group}}</td>-->
-                <!--<td>{{createdAt}}</td>-->
-                <!--<td>-->
-                  <!--{{#unless student.accepted}}<button class="ui orange button">Проверить</button>{{/unless}}-->
-                <!--</td>-->
-              <!--</tr>-->
-            <!--{{/each}}-->
-            </tbody>
-          </table>
+          {{/if}}
         </div>
       </div>
     </div>

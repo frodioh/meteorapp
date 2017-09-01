@@ -7,21 +7,9 @@ Groups = new Mongo.Collection('groups');
 //Определение прав для коллекции
 Groups.allow({
     insert: function(userId, doc) {
-        return Roles.userIsInRole('superadmin');
+        return Roles.userIsInRole(userId, 'superadmin');
     }
 });
-
-// //Схема для ингредиентов
-// IngredientSchema = new SimpleSchema({
-//     name: {
-//         type: String,
-//         label: "Ингредиент"
-//     },
-//     amount: {
-//         type: String,
-//         label: "Количество"
-//     }
-// });
 
 //Создание схемы для этой коллекции
 GroupsSchema = new SimpleSchema({
@@ -35,7 +23,10 @@ GroupsSchema = new SimpleSchema({
       defaultValue: 0
     },
     students: {
-      type: [String]
+      type: Array
+    },
+    "students.$": {
+      type: String
     },
     isArchive: {
         type: Boolean,

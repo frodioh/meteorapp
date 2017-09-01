@@ -8,10 +8,9 @@ Meteor.publish('groups', function(userId) {
   }
 
   if (haveAccess) {
-    let selector = {
-    };
-    return Mongo.Groups.find({});
-  } else {
     this.ready();
+    return Groups.find({});
+  } else {
+    this.stop();
   }
 });
