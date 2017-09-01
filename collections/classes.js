@@ -2,10 +2,10 @@ import SimpleSchema from 'simpl-schema';
 SimpleSchema.extendOptions(['autoform']);
 
 //Создание коллекции
-Groups = new Mongo.Collection('groups');
+Classes = new Mongo.Collection('classes');
 
 //Определение прав для коллекции
-Groups.allow({
+Classes.allow({
     insert: function(userId, doc) {
         return Roles.userIsInRole(userId, 'superadmin');
     },
@@ -15,28 +15,20 @@ Groups.allow({
 });
 
 //Создание схемы для этой коллекции
-GroupsSchema = new SimpleSchema({
+ClassesSchema = new SimpleSchema({
     name: {
         type: String,
-        label: "Номер"
+        label: "Название"
     },
-    class: {
-        type: String,
-        label: "Класс"
-    },
-    students: {
+    groups: {
       type: Array
     },
-    "students.$": {
+    "groups.$": {
       type: String
-    },
-    isArchive: {
-        type: Boolean,
-        defaultValue: false,
     },
     createdAt: {
         type: Date,
-        label: "Создана",
+        label: "Создан",
         autoValue: function() {
             return new Date();
         }
@@ -44,4 +36,4 @@ GroupsSchema = new SimpleSchema({
 });
 
 //Привязка схемы к коллекции
-Groups.attachSchema(GroupsSchema);
+Classes.attachSchema(ClassesSchema);

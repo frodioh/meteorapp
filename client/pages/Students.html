@@ -9,8 +9,45 @@
           <a class="item" data-tab="groups">
             <h5 class="ui header primary-header">Группы</h5>
           </a>
+            <a class="item" data-tab="classes">
+                <h5 class="ui header primary-header">Классы</h5>
+            </a>
         </div>
         <div class="ui tab segment active" data-tab="students">
+            <div class="page__controls controls">
+                <form class="controls__form">
+                    <button type="button" class="ui button positive student-add">
+                        <i class="add square icon"></i>
+                        Добавить студента
+                    </button>
+                    <div class="ui tiny modal student-add-modal">
+                        <i class="close icon"></i>
+                        <div class="header">
+                            Добавление студента
+                        </div>
+                        <div class="content">
+                            <div class="ui input">
+                                <input type="text" class="student-name" name="student_name" placeholder="Имя">
+                            </div>
+                            <div class="ui input">
+                                <input type="text" class="student-surname" name="student_surname" placeholder="Фамилия">
+                            </div>
+                            <div class="ui input">
+                                <input type="text" class="student-email" name="student_email" placeholder="Почта">
+                            </div>
+                            <div class="ui input">
+                                <input type="text" class="student-phone" name="student_phone" placeholder="Телефон">
+                            </div>
+                            <div class="ui input">
+                                <input type="text" class="student-pass" name="student_pass" placeholder="Пароль">
+                            </div>
+                        </div>
+                        <div class="actions">
+                            <div class="ui approve button">Добавить</div>
+                        </div>
+                    </div>
+                </form>
+            </div>
             <div class="page__controls controls">
               <div class="controls__left">
                 <form class="controls__form">
@@ -82,7 +119,7 @@
                         <input type="text" class="group-name" name="group_name" placeholder="Номер группы">
                       </div>
                       <h4 class="ui horizontal divider header">
-                        <i class="add user icon"></i>
+                        <i class="user icon"></i>
                         Студенты
                       </h4>
                       <div class="ui fluid multiple search selection dropdown">
@@ -120,11 +157,11 @@
               </tr>
               </thead>
               <tbody>
-              {{#each groups}}
+              {{#each group in groups}}
                 <tr>
-                  <td><a class="page__link" href="#">{{name}}</a></td>
-                  <td>{{countStudents students}}</td>
-                  <td>{{dateView createdAt}}</td>
+                  <td><a class="page__link" href="#">{{group.name}}</a></td>
+                  <td>{{countStudents group.students}}</td>
+                  <td>{{dateView group.createdAt}}</td>
                   <td><i class="remove icon red group-remove"></i></td>
                 </tr>
               {{/each}}
@@ -139,6 +176,81 @@
             </div>
           {{/if}}
         </div>
+        <div class="ui tab segment" data-tab="classes">
+              <div class="page__controls controls">
+                  <div class="controls__left">
+                      <form class="controls__form">
+                          <button type="button" class="ui button positive class-add">
+                              <i class="add square icon"></i>
+                              Добавить класс
+                          </button>
+                          <div class="ui tiny modal class-add-modal">
+                              <i class="close icon"></i>
+                              <div class="header">
+                                  Добавление класса
+                              </div>
+                              <div class="content">
+                                  <div class="ui input">
+                                      <input type="text" class="class-name" name="class_name" placeholder="Название класса">
+                                  </div>
+                                  <h4 class="ui horizontal divider header">
+                                      <i class="users icon"></i>
+                                      Группы
+                                  </h4>
+                                  <div class="ui fluid multiple search selection dropdown">
+                                      <input name="tags" type="hidden">
+                                      <i class="dropdown icon"></i>
+                                      <div class="default text">Номер группы</div>
+                                      <div class="menu">
+                                          {{#if subsReady 'groups'}}
+                                              {{#each groups}}
+                                                  <div class="item" data-value="{{_id}}">{{name}}</div>
+                                              {{/each}}
+                                          {{/if}}
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="actions">
+                                  <div class="ui approve button">Добавить</div>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+                  <div class="controls__right">
+                      <form class="controls__form">
+                      </form>
+                  </div>
+              </div>
+              {{#if subsReady 'classes'}}
+                  <table class="page__table">
+                      <thead>
+                      <tr>
+                          <th>Название класса</th>
+                          <th>Количество групп</th>
+                          <th>Дата создания</th>
+                          <th></th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      {{#each class in classes}}
+                          <tr>
+                              <td><a class="page__link" href="#">{{class.name}}</a></td>
+                              <td>{{countGroups class.groups}}</td>
+                              <td>{{dateView class.createdAt}}</td>
+                              <td><i class="remove icon red group-remove"></i></td>
+                          </tr>
+                      {{/each}}
+                      </tbody>
+                  </table>
+              {{else}}
+                  <div class="ui segment">
+                      <p></p>
+                      <div class="ui active inverted dimmer">
+                          <div class="ui loader"></div>
+                      </div>
+                  </div>
+              {{/if}}
+          </div>
       </div>
     </div>
   </main>
