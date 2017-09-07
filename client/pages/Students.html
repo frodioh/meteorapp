@@ -54,8 +54,9 @@
                   <label for="groupControl">Группа</label>
                   <select id="groupControl" class="controls_group ui dropdown">
                     <option value="">Выбрать группу</option>
-                    <option value="1">Группа 1</option>
-                    <option value="2">Группа 2</option>
+                    {{#each group in groups}}
+                        <option value="{{group._id}}">{{group.name}}</option>
+                    {{/each}}
                   </select>
                 </form>
               </div>
@@ -63,7 +64,7 @@
                 <form class="controls__form">
                   <label for="studentNameInput">Студент</label>
                   <div class="ui left input">
-                    <input id="studentNameInput" class="controls_group" placeholder="Имя и фамилия">
+                    <input id="studentSearchInput" class="controls_group" placeholder="Имя и фамилия">
                   </div>
                   <input id="studentFindBtn" class="ui green basic button" type="submit" value="Искать">
                 </form>
@@ -80,15 +81,35 @@
               </tr>
               </thead>
               <tbody>
+              {{#each newStudents}}
+                  <tr>
+                      <td><a class="page__link" href="#">{{name}} {{surname}}</a> <span class="page__sup">новый</span></td>
+                      <td>{{student.group}}</td>
+                      <td>{{dateView createdAt}}</td>
+                      <td>
+                          <button class="ui orange button tiny students-accept">Проверить</button>
+                      </td>
+                  </tr>
+              {{/each}}
               {{#each students}}
                 <tr>
-                  <td><a class="page__link" href="#">{{username}} {{surname}}</a> {{#unless student.accepted}}<span class="page__sup">новый</span>{{/unless}}</td>
+                  <td><a class="page__link" href="#">{{name}} {{surname}}</a></td>
                   <td>{{student.group}}</td>
                   <td>{{dateView createdAt}}</td>
                   <td>
-                    {{#unless student.accepted}}<button class="ui orange button tiny students-accept">Проверить</button>{{/unless}}
+                    <button class="ui red button tiny students-toarchive">В архив</button>
                   </td>
                 </tr>
+              {{/each}}
+              {{#each archiveStudents}}
+                  <tr>
+                      <td><a class="page__link" href="#">{{name}} {{surname}}</a></td>
+                      <td>{{student.group}}</td>
+                      <td>{{dateView createdAt}}</td>
+                      <td>
+                          <button class="ui gray button tiny students-toactive">Вернуть</button>
+                      </td>
+                  </tr>
               {{/each}}
               </tbody>
             </table>
@@ -129,7 +150,7 @@
                         <div class="menu">
                           {{#if subsReady 'students'}}
                             {{#each students}}
-                              <div class="item" data-value="{{_id}}">{{username}} {{surname}}</div>
+                              <div class="item" data-value="{{_id}}">{{name}} {{surname}}</div>
                             {{/each}}
                           {{/if}}
                         </div>

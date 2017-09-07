@@ -1,3 +1,22 @@
+Template['atSelectGroups'].onCreated(function () {
+    this.subscribe("groups");
+});
+
+Template['atSelectClasses'].onCreated(function () {
+    this.subscribe("classes");
+});
+
+Template['atSelectGroups'].helpers({
+    groups: function() {
+        return Groups.find({});
+    }
+});
+
+Template['atSelectClasses'].helpers({
+    classes: function() {
+        return Classes.find({});
+    }
+});
 
 Template['atForm'].helpers({
     atClass: function() {

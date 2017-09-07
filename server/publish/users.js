@@ -1,7 +1,6 @@
 Meteor.publish('userData', function () {
     userId = Meteor.userId();
     if (userId) {
-        userId = this.userId;
         // Select only the users that match the array of IDs passed in
         let selector = {
             _id: userId
@@ -10,7 +9,7 @@ Meteor.publish('userData', function () {
         let options = {
             fields: {
                 createdAt: 1,
-                username: 1,
+                name: 1,
                 surname: 1,
                 emails: 1,
                 phone: 1

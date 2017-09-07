@@ -1,9 +1,9 @@
-<template name="override-atSelectInput">
+<template name="atSelectClasses">
     <div class="at-input at-select-input">
         <select class="ui dropdown" id="at-field-{{_id}}" name="at-field-{{_id}}">
             <option value="">{{displayName}}</option>
-            {{#each options.select}}
-                <option value="{{value}}">{{text}}</option>
+            {{#each classes}}
+                <option value="{{_id}}">{{name}}</option>
             {{/each}}
         </select>
     </div>

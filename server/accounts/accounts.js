@@ -1,6 +1,7 @@
 Accounts.onCreateUser((options, user) => {
   if(options.profile.isStudent) {
       user._id = Random.id();
+      user.name = options.profile.name;
       user.surname = options.profile.surname;
       user.phone = options.profile.phone;
       user.student = {
@@ -11,8 +12,8 @@ Accounts.onCreateUser((options, user) => {
         accepted: false,
         isArchive: false
       };
-      user.roles = ['student'];
+      user.roles = { "__global_roles__" : [ "student"] };
+      Roles.addUsersToRoles(user._id, 'student', Roles.GLOBAL_GROUP);
   }
-  Roles.addUsersToRoles(user._id, 'student', Roles.GLOBAL_GROUP);
   return user;
 });

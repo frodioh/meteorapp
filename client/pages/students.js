@@ -14,7 +14,13 @@ Template.Students.onRendered(function () {
 
 Template.Students.helpers({
   students() {
-    return Meteor.users.find({roles: ['student']});
+    return Meteor.users.find({"roles": {"__global_roles__": ['student']}, "student.isArchive": false , "student.accepted": true});
+  },
+  archiveStudents() {
+    return Meteor.users.find({"roles": {"__global_roles__": ['student']}, "student.isArchive": true });
+  },
+  newStudents() {
+    return Meteor.users.find({"roles": {"__global_roles__": ['student']}, "student.isArchive": false , "student.accepted": false});
   },
   groups() {
     return Groups.find({});
@@ -109,17 +115,21 @@ Template.Students.events({
               let studentPhone = jthis.find('input.student-phone');
               let studentPass = jthis.find('input.student-pass');
               let student = {
-                username: studentName,
-                surname: studentSurname,
-                email: studentEmail,
-                phone: studentPhone,
-                pass: studentPass
+                name: studentName.val(),
+                surname: studentSurname.val(),
+                email: studentEmail.val(),
+                phone: studentPhone.val(),
+                pass: studentPass.val()
               };
               studentName.value = '';
               studentSurname.value = '';
               studentEmail.value = '';
               studentPhone.value = '';
               studentPass.value = '';
+              Meteor.call('addStudent', student, function(err, result) {
+                  console.log(err);
+                  console.log(result);
+              });
           },
           inverted: true
       }).modal('show');
