@@ -1,0 +1,27 @@
+<template name="Profile">
+    <main class="content page profile-page">
+        <div class="content__inner">
+            <div class="primary-header">Студент {{profile.name}} {{profile.surname}}</div>
+            <div class="profile__card">
+                <div class="profile__left">
+                    <div class="profile__photo"><img class="profile__photo-picture" src="assets/img/main-profile-avatar.jpg"></div><a class="profile__photo-edit">Изменить фото</a>
+                </div>
+                <div class="profile__right">
+                    <h2 class="profile__name">{{profile.name}} {{profile.surname}} {{#unless profile.student.accepted}}<span class="page__sup">новый</span>{{/unless}}</h2>
+                    <div class="profile__private">
+                        <div class="profile__section-title">Личные данные</div>
+                        <div class="profile__phone">Телефон: {{profile.phone}}</div>
+                        <div class="profile__email">Почта: {{getEmail}}</div>
+                        <div class="profile__ctrls"><a href="#" class="page__link">Изменить данные</a> <a href="#" class="page__link">Изменить пароль</a></div>
+                    </div>
+                    <div class="profile__study">
+                        <div class="profile__section-title">Учебные данные</div>
+                        <div class="profile__group">Группа: 5</div>
+                        <div class="profile__beginning">Начало обучения: {{dateView profile.createdAt}}</div>
+                        <div class="profile__lessons">Осталось практических занятий: {{profile.student.lessons}} из {{profile.student.totalLessons}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</template>

@@ -83,31 +83,32 @@
               <tbody>
               {{#each newStudents}}
                   <tr>
-                      <td><a class="page__link" href="#">{{name}} {{surname}}</a> <span class="page__sup">новый</span></td>
-                      <td>{{student.group}}</td>
+                      <td><a class="page__link" href="/profile/{{_id}}">{{name}} {{surname}}</a> <span class="page__sup">новый</span></td>
+                      <td>{{groupName student.group}}</td>
                       <td>{{dateView createdAt}}</td>
                       <td>
-                          <button class="ui orange button tiny students-accept">Проверить</button>
+                          <button class="ui orange button tiny students-accept" data-tooltip="Подтвердить студента" data-position="top center" data-variation="mini">Проверить</button>
                       </td>
                   </tr>
               {{/each}}
               {{#each students}}
                 <tr>
-                  <td><a class="page__link" href="#">{{name}} {{surname}}</a></td>
-                  <td>{{student.group}}</td>
+                  <td><a class="page__link" href="/profile/{{_id}}">{{name}} {{surname}}</a></td>
+                  <td>{{groupName student.group}}</td>
                   <td>{{dateView createdAt}}</td>
                   <td>
-                    <button class="ui red button tiny students-toarchive">В архив</button>
+                      <button class="ui green button icon tiny students-toarchive" data-tooltip="Убрать в архив" data-position="top center" data-variation="mini"><i class="archive icon"></i></button>
                   </td>
                 </tr>
               {{/each}}
               {{#each archiveStudents}}
                   <tr>
-                      <td><a class="page__link" href="#">{{name}} {{surname}}</a></td>
-                      <td>{{student.group}}</td>
+                      <td><a class="page__link" href="/profile/{{_id}}">{{name}} {{surname}}</a></td>
+                      <td>{{groupName student.group}}</td>
                       <td>{{dateView createdAt}}</td>
                       <td>
-                          <button class="ui gray button tiny students-toactive">Вернуть</button>
+                          <button class="ui green button icon tiny students-toactive" data-tooltip="Вернуть в активные" data-position="top center" data-variation="mini"><i class="reply icon"></i></button>
+                          <button class="ui red button icon tiny students-remove" data-tooltip="Удалить" data-position="top center" data-variation="mini"><i class="trash icon"></i></button>
                       </td>
                   </tr>
               {{/each}}

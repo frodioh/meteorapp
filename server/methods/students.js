@@ -9,6 +9,36 @@ Meteor.methods({
       return false;
     }
   },
+  archiveStudent(userId) {
+    if(Roles.userIsInRole(Meteor.userId(), ['superadmin', 'moderator'])) {
+      if(Roles.userIsInRole(userId, 'student')) {
+        Meteor.users.update({_id: userId}, {$set: {"student.isArchive": true}});
+      }
+      return true;
+    } else {
+      return false;
+    }
+  },
+  removeStudent(userId) {
+    if(Roles.userIsInRole(Meteor.userId(), ['superadmin', 'moderator'])) {
+      if(Roles.userIsInRole(userId, 'student')) {
+        Meteor.users.remove({_id: userId});
+      }
+      return true;
+    } else {
+      return false;
+    }
+  },
+  activateStudent(userId) {
+    if(Roles.userIsInRole(Meteor.userId(), ['superadmin', 'moderator'])) {
+      if(Roles.userIsInRole(userId, 'student')) {
+          Meteor.users.update({_id: userId}, {$set: {"student.isArchive": false}});
+      }
+      return true;
+    } else {
+      return false;
+    }
+  },
   addStudent(student) {
       if(Roles.userIsInRole(Meteor.userId(), 'superadmin')) {
           let studentId = Random.id();
@@ -16,6 +46,7 @@ Meteor.methods({
               _id: studentId,
               name: student.name,
               surname: student.surname,
+              phone: student.phone,
               emails: [
                   { address: student.email, verified: true }
               ],

@@ -23,6 +23,9 @@ body
 h1, h2, h3, h4, h5, h6
   margin 0
 
+a:hover
+  color $selected-color
+
 ::-webkit-input-placeholder
   color $tertiary-text
 ::-moz-placeholder
@@ -104,7 +107,10 @@ h1, h2, h3, h4, h5, h6
   padding 33px 0
   color $primary-text
   &__link
+    text-decoration underline
     color $primary-text
+    &:hover
+      color $selected-color
 
 .content
   width 74.09090909090909%
@@ -188,12 +194,15 @@ h1, h2, h3, h4, h5, h6
     .main-navigation__title
       color $selected-color
       text-decoration none
+    i.icon
+      color $selected-color
   &__item:last-child
     margin-bottom 0
   &__right
     flex-grow 1
   &__left
     width 32px
+    padding-top 3px
     padding-top 3px
     flex-shrink 0
   &__item--record svg
@@ -205,6 +214,9 @@ h1, h2, h3, h4, h5, h6
   &__item--instructors svg
     width: 25px;
     height: 30px;
+  &__item--moderators i.icon
+    font-size 1.3em
+    color $white
   &__item--pay svg
     width 18px
     height 19px
@@ -273,6 +285,15 @@ h1, h2, h3, h4, h5, h6
     vertical-align super
     font-size 0.9rem;
     color red
+  .modal
+    .content
+      display flex
+      flex-wrap wrap
+      justify-content space-between
+      padding-bottom 2rem
+      .ui.input
+        width 48%
+        margin-bottom 15px
 
 //#Group page
 .group-remove
@@ -332,7 +353,11 @@ h1, h2, h3, h4, h5, h6
 .students-page
   .primary-header
     margin-bottom 20px
-
+  .page__table
+    tbody
+      td:last-child
+        text-align right
+        padding-right 10px
 //#Pay page
 .pay-page
   .primary-header
@@ -365,6 +390,28 @@ h1, h2, h3, h4, h5, h6
     width 100%
     display flex
     background $white-bg
+    padding-bottom 400px
+  &__left
+    width 29.30591259640103%
+    padding 30px 40px 0
+  &__right
+    flex-grow: 1
+    padding-top 35px
+  &__photo
+    width 100%
+    border-radius 50%
+    overflow hidden
+  &__photo-picture
+    max-width 100%
+  &__name
+    margin-bottom 25px
+  &__section-title
+    font-weight bold
+  &__private
+    margin-bottom 45px
+.profile-page
+  .primary-header
+    margin-bottom 25px
 
 //#Auth page
 .auth-page

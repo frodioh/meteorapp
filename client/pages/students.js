@@ -28,6 +28,9 @@ Template.Students.helpers({
   classes() {
     return Classes.find({});
   },
+  groupName(groupId) {
+    return Groups.findOne({_id: groupId}).name;
+  },
   dateView(date) {
     let options = {
       year: 'numeric',
@@ -98,6 +101,27 @@ Template.Students.events({
   'click .students-accept': function(event) {
     event.preventDefault();
     Meteor.call('acceptStudent', this._id, function(err, result) {
+      console.log(err);
+      console.log(result);
+    });
+  },
+  'click .students-toarchive': function(event) {
+    event.preventDefault();
+    Meteor.call('archiveStudent', this._id, function(err, result) {
+        console.log(err);
+        console.log(result);
+    });
+  },
+  'click .students-toactive': function(event) {
+    event.preventDefault();
+    Meteor.call('activateStudent', this._id, function(err, result) {
+        console.log(err);
+        console.log(result);
+    });
+  },
+  'click .students-remove': function(event) {
+    event.preventDefault();
+    Meteor.call('removeStudent', this._id, function(err, result) {
       console.log(err);
       console.log(result);
     });

@@ -24,12 +24,26 @@ Template.Video.events({
           closable: true,
           transition: 'vertical flip',
           onApprove: function() {
+              function validateYouTubeUrl(url)
+              {
+                  if (url) {
+                      let regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=|\?v=)([^#\&\?]*).*/;
+                      let match = url.match(regExp);
+                      if (match && match[2].length === 11) {
+                          var resultUrl = 'https://www.youtube.com/embed/' + match[2] + '?autoplay=0';
+                          return resultUrl;
+                      } else {
+                          console.log('Неправильный url');
+                          return false;
+                      }
+                  }
+              }
               let jthis = $(this);
               let videoTitle = jthis.find('input.video-title');
               let videoLink = jthis.find('input.video-link');
               let video = {
                   title: videoTitle.val(),
-                  link: videoLink.val(),
+                  link: validateYouTubeUrl(videoLink.val())
               };
               videoTitle.value = '';
               videoLink.value = '';

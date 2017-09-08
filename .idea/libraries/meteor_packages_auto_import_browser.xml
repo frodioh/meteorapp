@@ -375,6 +375,7 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.11/web.browser/deprecated.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.11/web.browser/reload.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.9/web.browser/retry.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/packages/ostrio_files/worker.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars/1.0.15/web.browser/spacebars-runtime.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.1.2/web.browser/react.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.1.2/web.browser/compiler.js" />
@@ -386,6 +387,9 @@
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/namespace.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/utils.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/heartbeat.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/event-emitter.js" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/files.coffee" />
+        <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_cookies/2.0.4/web.browser/cookies.coffee" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/roles_common.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/client/debug.js" />
         <item url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/client/uiHelpers.js" />
@@ -824,6 +828,7 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.11/web.browser/deprecated.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/reload/1.1.11/web.browser/reload.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/retry/1.0.9/web.browser/retry.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/packages/ostrio_files/worker.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars/1.0.15/web.browser/spacebars-runtime.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.1.2/web.browser/react.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/spacebars-compiler/1.1.2/web.browser/compiler.js" />
@@ -835,6 +840,9 @@
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/namespace.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/utils.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ddp-common/1.2.9/web.browser/heartbeat.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/event-emitter.js" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_files/1.5.6/web.browser/files.coffee" />
+      <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/ostrio_cookies/2.0.4/web.browser/cookies.coffee" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/roles_common.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/client/debug.js" />
       <root url="file://$USER_HOME$/AppData/Local/.meteor/packages/alanning_roles/1.2.16/web.browser/client/uiHelpers.js" />
